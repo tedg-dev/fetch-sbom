@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Test and build artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local data
+sboms/
+key.json
+
+# OS
+.DS_Store
