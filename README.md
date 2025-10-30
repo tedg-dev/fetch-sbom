@@ -89,7 +89,7 @@ The tests stub network calls; no real GitHub traffic is generated.
 - `key.json` contains secrets. Do not commit it. Use `key.sample.json` as a template.
 - Consider using a secrets manager for long-term storage and rotating tokens regularly.
 
-## Repository setup (publishing)
+## Repository setup (publishing under tedg-dev)
 1) Initialize git and create first commit (do NOT add `key.json`):
 ```bash
 git init
@@ -103,13 +103,18 @@ git reset key.json || true
 git commit -m "Initial commit: GitHub SBOM fetcher"
 ```
 
-2) Create GitHub repo (choose one):
+2) Create public GitHub repo under the tedg-dev account (choose one):
 - Using GitHub CLI (recommended):
 ```bash
 # requires https://cli.github.com/ and gh auth login
-gh repo create fetch-sbom --public --source=. --remote=origin --push
+# ensure you are authenticated as tedg-dev (gh auth status)
+gh repo create tedg-dev/fetch-sbom \
+  --public \
+  --source=. \
+  --remote=origin \
+  --push
 ```
-- Or create a public repo at https://github.com/new named `fetch-sbom`, then:
+- Or create a public repo owned by tedg-dev at https://github.com/new named `fetch-sbom`, then:
 ```bash
 git branch -M main
 git remote add origin git@github.com:tedg-dev/fetch-sbom.git  # or https URL
